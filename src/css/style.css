@@ -7,7 +7,7 @@
 
 :root {
   --h-nav__bar: 50px;
-  --max-width: 1024px;
+  --max-width: 1400px;
   --black: #000;
   --white: #fff;
   --gray: #ccc;
@@ -28,6 +28,22 @@ img {
   display: block;
 }
 
+nav {
+  display: flex;
+}
+.nav__container {
+  display: flex;
+}
+
+.nav__logo__icon {
+  font-size: 5rem;
+}
+
+.navbar__logo {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
 /*=======================Header===============================
 */
 header {
@@ -42,7 +58,7 @@ header {
 
 header nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   max-width: var(--max-width);
   width: 100%;
@@ -54,6 +70,32 @@ header nav i {
   font-size: 3rem;
   cursor: pointer;
   position: relative;
+}
+.nav__store {
+  display: flex;
+  background-color: green;
+}
+.nav__logo {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.nav__logo img {
+  width: 150px;
+}
+
+.nav__icons {
+  display: flex;
+}
+.nav__logo__icon {
+  display: flex;
+  background-color: transparent;
+}
+
+.nav__container {
+  display: flex;
+  gap: 1rem;
 }
 
 .cart__amount__product {
@@ -116,7 +158,7 @@ header nav i {
 
 .products {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   max-width: var(--max-width);
   margin: 0 auto;
   gap: 1rem;
@@ -331,6 +373,10 @@ header nav i {
   header {
     height: 70px;
   }
+  .nav__logo img {
+    width: 200px;
+  }
+
   .cart {
     width: 500px;
     right: -400px;
