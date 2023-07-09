@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"
+      integrity="sha512-nKZDK+ztK6Ug+2B6DZx+QtgeyAmo9YThZob8O3xgjqhw2IVQdAITFasl/jqbyDwclMkLXFOZRiytnUrXk/PM6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <script src="./src/js/main.js" defer></script>
+    <title>Ecommers</title>
+  </head>
+  <body class="main">
+    <header>
+      <nav>
+        <i class="bx bx-cart-alt">
+          <span class="cart__amount__product"></span>
+        </i>
+      </nav>
+    </header>
+
+    <main class="main__container">
+      <div class="buttons">
+        <button class="btn all" id="all" data-filter="all">all</button>
+        <button class="btn shirt" id="shirt" data-filter=".shirt">shirt</button>
+        <button class="btn hoddie" id="hoddie" data-filter=".hoddie">
+          hoddie
+        </button>
+        <button class="btn sweater" id="sweater" data-filter=".sweater">
+          sweater
+        </button>
+      </div>
+
+      <div class="products"></div>
+
+      <div class="cart">
+        <div class="cart__products"></div>
+        <div class="cart__total"></div>
+      </div>
+    </main>
+  </body>
+</html>
