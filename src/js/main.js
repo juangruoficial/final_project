@@ -264,12 +264,6 @@ function printAmountProducts(dataBase) {
   amountProductsHTML.textContent = amount;
 }
 
-//revisar
-function printAmountOnProducts(dataBase) {
-  const amountProductsHTML = document.querySelector(".product__info");
-  const productsHTML = document.querySelector(".products");
-}
-
 function trashtoCartFromProduct(dataBase) {
   const productsHTML = document.querySelector(".products");
 
@@ -331,23 +325,18 @@ async function main() {
   };
 
   printProducts(dataBase);
-
   showHideCart();
   addToCartFromProducts(dataBase);
   minusToCartFromProducts(dataBase);
-
-  //printtitleShopCart(dataBase);
-  // console.log(printtitleShopCart(dataBase));
   printProductsToCart(dataBase);
   handlePodructsFromCart(dataBase);
   printButtonBuy(dataBase);
   printInfoTotal(dataBase);
+
   handletoBuy(dataBase);
   printAmountProducts(dataBase);
-  //revisar
-  //printAmountOnProducts(dataBase);
-  handleFilters(dataBase);
   trashtoCartFromProduct(dataBase);
+  handleFilters(dataBase);
 }
 
 main();
