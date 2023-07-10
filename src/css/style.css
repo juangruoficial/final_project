@@ -594,17 +594,17 @@ header nav i {
   }
 
   .home__text__title {
-    font-size: 3.5rem;
-    line-height: 5rem;
+    font-size: 2rem;
+    line-height: 2.3rem;
   }
 
   .home__text__p {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     line-height: 3rem;
   }
 
   .home__text_price {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .home__header {
@@ -616,9 +616,9 @@ header nav i {
   }
 
   .home__link_showmore {
-    width: 70%;
-    padding: 3rem;
-    font-size: 2rem;
+    width: 50%;
+    padding: 2rem;
+    font-size: 1.5rem;
     margin-top: 1rem;
   }
 }
