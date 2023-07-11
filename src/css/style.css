@@ -1,14 +1,8 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 :root {
   --gray__dark: #5b5a5a;
   --h-nav__bar: 50px;
-  --h-nav__bar__big: 300px;
+  --h-nav__bar__big: 70px;
+  --scroll__margin__top: 80px;
   --max-width: 1200px;
   --black: #000;
   --white: #fff;
@@ -18,6 +12,14 @@
   --bow__shadow__red: 0 0.25rem 1rem #e94959;
   --box__shadow__down: 0rem 1rem 1rem rgba(0, 0, 0, 0.2);
   --red__light: hsl(354, 78%, 60%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  scroll-margin-top: var(--h-nav__bar__big);
 }
 
 body {
@@ -32,6 +34,8 @@ img {
 .main__container {
   display: flex;
   flex-direction: column;
+  transition: scroll-behavior 0.5;
+  scroll-behavior: smooth;
 }
 
 nav {
@@ -465,7 +469,7 @@ header nav i {
 
 @media (min-width: 700px) {
   header {
-    height: 70px;
+    height: var(--h-nav__bar__big);
   }
 
   .nav__logo img {
@@ -549,6 +553,9 @@ header nav i {
   .void {
     width: 100%;
     height: 20vh;
+  }
+
+  .container__products {
   }
 
   .products {
