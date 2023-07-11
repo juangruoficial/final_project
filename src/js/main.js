@@ -262,6 +262,7 @@ function handletoBuy(dataBase) {
     printProductsToCart(dataBase);
     printAmountProducts(dataBase);
     printProducts(dataBase);
+    location.href = location.href;
   });
 }
 
