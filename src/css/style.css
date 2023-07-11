@@ -9,7 +9,7 @@
   --gray__dark: #5b5a5a;
   --h-nav__bar: 50px;
   --h-nav__bar__big: 300px;
-  --max-width: 1100px;
+  --max-width: 1200px;
   --black: #000;
   --white: #fff;
   --gray: #ccc;
@@ -594,17 +594,17 @@ header nav i {
   }
 
   .home__text__title {
-    font-size: 1.5rem;
+    font-size: 2.2rem;
     line-height: 2.3rem;
   }
 
   .home__text__p {
-    font-size: 1rem;
-    line-height: 3rem;
+    font-size: 1.4rem;
+    line-height: 1.5rem;
   }
 
   .home__text_price {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
 
   .home__header {
