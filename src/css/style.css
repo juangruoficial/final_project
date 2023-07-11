@@ -12,6 +12,21 @@
   --bow__shadow__red: 0 0.25rem 1rem #e94959;
   --box__shadow__down: 0rem 1rem 1rem rgba(0, 0, 0, 0.2);
   --red__light: hsl(354, 78%, 60%);
+
+  /*===================Dark Mode=================*/
+
+  --gray__darkMode: #5b5a5a;
+  --h-nav__barMode: 50px;
+  --h-nav__bar__bigMode: 70px;
+  --scroll__margin__topMode: 80px;
+  --blackMode: #000;
+  --whiteMode: #fff;
+  --grayMode: #ccc;
+  --box__shadowMode: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
+  --box__shadow__lightMode: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  --bow__shadow__redMode: 0 0.25rem 1rem #e94959;
+  --box__shadow__downMode: 0rem 1rem 1rem rgba(0, 0, 0, 0.2);
+  --red__lightMode: hsl(354, 78%, 60%);
 }
 
 * {
@@ -22,20 +37,25 @@
   scroll-margin-top: var(--h-nav__bar__big);
 }
 
-body {
-  background-color: var(--gray);
-  user-select: none;
-}
-
-img {
-  width: 100%;
-  display: block;
-}
 .main__container {
   display: flex;
   flex-direction: column;
   transition: scroll-behavior 0.5;
   scroll-behavior: smooth;
+  background-color: var(--gray);
+  user-select: none;
+  opacity: 1;
+  visibility: 0;
+}
+
+.dark__mode {
+  opacity: 1;
+  visibility: 0;
+}
+
+img {
+  width: 100%;
+  display: block;
 }
 
 nav {
@@ -567,9 +587,6 @@ header nav i {
   .void {
     width: 100%;
     height: 20vh;
-  }
-
-  .container__products {
   }
 
   .products {

@@ -1,14 +1,18 @@
 const BASE_URL = "https://ecommercebackend.fundamentos-29.repl.co/";
 
-async function getProductsApi() {
+async function fetchProducts() {
   try {
     const data = await fetch(BASE_URL);
     const res = await data.json();
-
-    window.localStorage.setItem("products", JSON.stringify(res));
-
     return res;
-  } catch (error) {}
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return null;
+  }
+}
+
+function saveToLocalStorage(key, data) {
+  localStorage.setItem(key, JASON.stringify(data));
 }
 
 function printProducts(dataBase) {
@@ -55,6 +59,17 @@ function showHideCart() {
     cartHTML.classList.toggle("cart__show");
   });
 }
+
+/* function darkMode() {
+  const moonIconHTML = document.querySelector(".bxs-moon");
+  const dark__showHTML = document.querySelector(".main__container");
+
+  moonIconHTML.addEventListener("click", function (e) {
+    console.log();
+
+    dark__showHTML.classlist.toggle("dark__mode");
+  });
+} */
 
 function addToCartFromProducts(dataBase) {
   const productsHTML = document.querySelector(".products");
@@ -319,13 +334,16 @@ async function main() {
   const dataBase = {
     products:
       JSON.parse(window.localStorage.getItem("products")) ||
-      (await getProductsApi()),
+      (await fetchProducts()),
 
     cart: JSON.parse(window.localStorage.getItem("cart")) || {},
   };
 
+  saveToLocalStorage();
+
   printProducts(dataBase);
   showHideCart();
+  darkMode();
   addToCartFromProducts(dataBase);
   minusToCartFromProducts(dataBase);
   printProductsToCart(dataBase);
