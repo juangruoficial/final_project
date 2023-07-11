@@ -9,7 +9,7 @@
   --gray__dark: #5b5a5a;
   --h-nav__bar: 50px;
   --h-nav__bar__big: 300px;
-  --max-width: 1024px;
+  --max-width: 1100px;
   --black: #000;
   --white: #fff;
   --gray: #ccc;
@@ -594,17 +594,17 @@ header nav i {
   }
 
   .home__text__title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 2.3rem;
   }
 
   .home__text__p {
-    font-size: 1.5rem;
+    font-size: 1rem;
     line-height: 3rem;
   }
 
   .home__text_price {
-    font-size: 2rem;
+    font-size: 1rem;
   }
 
   .home__header {
@@ -617,8 +617,8 @@ header nav i {
 
   .home__link_showmore {
     width: 50%;
-    padding: 2rem;
-    font-size: 1.5rem;
+    padding: 1.3rem;
+    font-size: 1rem;
     margin-top: 1rem;
   }
 }
