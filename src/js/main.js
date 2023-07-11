@@ -1,18 +1,14 @@
 const BASE_URL = "https://ecommercebackend.fundamentos-29.repl.co/";
 
-async function fetchProducts() {
+async function getProductsApi() {
   try {
     const data = await fetch(BASE_URL);
     const res = await data.json();
+    window.localStorage.setItem("products", JSON.stringify(res));
     return res;
   } catch (error) {
-    console.error("Error fetching products:", error);
-    return null;
+    console.log("Error while fetching products:");
   }
-}
-
-function saveToLocalStorage(key, data) {
-  localStorage.setItem(key, JASON.stringify(data));
 }
 
 function printProducts(dataBase) {
@@ -334,16 +330,18 @@ async function main() {
   const dataBase = {
     products:
       JSON.parse(window.localStorage.getItem("products")) ||
-      (await fetchProducts()),
+      (await getProductsApi()),
 
     cart: JSON.parse(window.localStorage.getItem("cart")) || {},
   };
 
-  saveToLocalStorage();
+  console.log(dataBase);
+  //saveToLocalStorage("products", dataBase.products);
+  //getfromLocalStorage("products", dataBase.products);
 
   printProducts(dataBase);
   showHideCart();
-  darkMode();
+  //darkMode(); solucionar
   addToCartFromProducts(dataBase);
   minusToCartFromProducts(dataBase);
   printProductsToCart(dataBase);
