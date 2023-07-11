@@ -90,7 +90,10 @@ header nav i {
 .nav__logo {
   display: flex;
   align-items: center;
-  padding: 1rem;
+}
+
+.nav__logo:hover {
+  transform: scale(1.05);
 }
 
 .nav__logo img {
@@ -100,11 +103,22 @@ header nav i {
 .nav__icons {
   display: flex;
 }
+
 .nav__logo__icon {
   display: flex;
   background-color: transparent;
 }
 
+.bxs-moon:hover {
+  transform: scale(1.08);
+}
+.bx-cart-alt:hover {
+  transform: scale(1.08);
+}
+
+.bx-menu:hover {
+  transform: scale(1.08);
+}
 .cart__amount__product {
   width: 15px;
   border-radius: 50%;
