@@ -58,7 +58,7 @@ function showHideCart() {
 
 function toggleDarkMode() {
   const darkModeIcon = document.querySelector(".bxs-moon");
-  const container = document.querySelector(".main__container");
+  const container = document.querySelector("body");
 
   darkModeIcon.addEventListener("click", function () {
     container.classList.toggle("dark__mode");
