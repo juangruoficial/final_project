@@ -70,7 +70,7 @@ function toggleDarkMode() {
 }
 
 function checkDarkMode() {
-  const container = document.querySelector(".main__container");
+  const container = document.querySelector("body");
   const isDarkModeEnabled = JSON.parse(window.localStorage.getItem("darkMode"));
 
   if (isDarkModeEnabled) {
