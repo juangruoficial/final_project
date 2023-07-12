@@ -44,11 +44,11 @@
   scroll-behavior: smooth;
   background-color: var(--gray);
   user-select: none;
-  background-color: blue;
+  background-color: var(--gray__light);
 }
 
 .dark__mode {
-  background-color: red;
+  background-color: black;
 }
 
 img {
@@ -77,7 +77,7 @@ nav {
 header {
   display: flex;
   height: var(--h-nav__bar);
-  background-color: var(--white);
+  background-color: var(--gray);
   position: fixed;
   width: 100%;
   left: 0;
@@ -102,6 +102,7 @@ header nav i {
 
 .nav__container {
   display: flex;
+  position: relative;
   gap: 1rem;
 }
 
@@ -137,6 +138,76 @@ header nav i {
 .bx-menu:hover {
   transform: scale(1.08);
 }
+.main__container {
+  display: flex;
+  background-color: blue;
+}
+
+.menu {
+  visibility: 1;
+  opacity: 0;
+}
+.menu__hidden {
+  position: fixed;
+
+  background-color: var(--gray);
+  display: flex;
+  align-self: flex-end;
+  margin-top: var(--h-nav__bar);
+  width: 80%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  visibility: 0;
+  opacity: 1;
+}
+
+.menu a {
+  text-align: center;
+  padding: 1rem;
+  border-radius: 2rem;
+  font-size: 2.5rem;
+  text-decoration: none;
+  color: var(--black);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.menu__links {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  gap: 3rem;
+}
+
+.menu__text__home {
+  width: 100%;
+}
+
+.menu__text__products {
+  width: 100%;
+}
+
+.menu__text__home:hover {
+  box-shadow: var(--box__shadow__light);
+  transform: scale(1.09);
+}
+
+.menu__text__products:hover {
+  box-shadow: var(--box__shadow__light);
+  transform: scale(1.09);
+}
+
+.menu__text__home:active {
+  box-shadow: var(--box__shadow__light);
+  transform: scale(0.9);
+}
+
+.menu__text__products:active {
+  box-shadow: var(--box__shadow__light);
+  transform: scale(0.9);
+}
+
 .cart__amount__product {
   width: 15px;
   border-radius: 50%;
@@ -149,6 +220,15 @@ header nav i {
   right: 0;
   top: 15px;
 }
+
+/*   =======================menu================
+*/
+/* .menu {
+  width: 800px;
+  height: 800px;
+  background-color: green;
+} */
+
 /*=======================Home===============================
 */
 

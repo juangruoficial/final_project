@@ -78,6 +78,15 @@ function checkDarkMode() {
   }
 }
 
+function handleMenuButton() {
+  const menuButton = document.querySelector(".bx-menu");
+  const menuLinksContainer = document.querySelector(".menu");
+
+  menuButton.addEventListener("click", function () {
+    menuLinksContainer.classList.toggle("menu__hidden");
+  });
+}
+
 function addToCartFromProducts(dataBase) {
   const productsHTML = document.querySelector(".products");
 
@@ -351,6 +360,7 @@ async function main() {
   //getfromLocalStorage("products", dataBase.products);
   toggleDarkMode();
   checkDarkMode();
+  handleMenuButton();
   printProducts(dataBase);
 
   showHideCart();
