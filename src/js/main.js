@@ -36,7 +36,7 @@ function printProducts(dataBase) {
                              <div class="product__info">
                              <h4>${name} |<span><b>Stock</b>: ${quantity}</span></h4>
                              <h5>${buttonMinus}
-                                    $${price}.0
+                                    $${price}.00
                                     ${buttonAdd}
                                     ${buttonTrash}
                                     <span class='amount' id='${id}'></span>
@@ -152,6 +152,7 @@ function printProductsToCart(dataBase) {
   let html = "";
   for (const product in dataBase.cart) {
     const { amount, quantity, price, name, image, id } = dataBase.cart[product];
+    const totalPrice = price * amount;
     html += `<div class="cart__product">
                <div class="cart__product__img">
                     <img src='${image}' alt='${name}' />
@@ -160,6 +161,9 @@ function printProductsToCart(dataBase) {
                     <h4> ${name} | $${price}.0 </h4>
                     
                     <p>Stock: ${quantity}</p>
+                    <span class'info__total__product'>Total: $${totalPrice.toFixed(
+                      2
+                    )} USD</span>
                     <div class='cart__product__opt' id='${id}'>
                     <i class='bx bx-minus'></i>
                     <span>${amount}</span>
