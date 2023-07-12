@@ -1,4 +1,4 @@
-const BASE_URL = "https://ecommercebackend.fundamentos-29.repl.co/";
+const BASE_URL = "https://services-academlo-shopping.onrender.com/";
 
 async function getProductsApi() {
   try {
@@ -19,9 +19,13 @@ function printProducts(dataBase) {
     const buttonAdd = quantity
       ? `<i class='bx bx-plus' id='${id}'></i>`
       : `<span class='sold__out'>Sold Out</span>`;
-    const buttonMinus = `<i class='bx bx-minus' id='${id}'></i>`;
+    const buttonMinus = quantity
+      ? `<i class='bx bx-minus' id='${id}'></i>`
+      : ``;
 
-    const buttonTrash = `<i class='bx bxs-trash' id='${id}'></i>`;
+    const buttonTrash = quantity
+      ? `<i class='bx bxs-trash' id='${id}'></i>`
+      : ``;
 
     html += `
                       <div class="product ${category}" >

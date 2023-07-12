@@ -218,34 +218,34 @@ header nav {
   position: relative;
   gap: 1rem;
 }
-svg {
-  display: inline-block;
-}
 
 .nav__logo {
-  display: flex;
-  background-color: blue;
+  display: block;
+  width: 70px;
 }
 
+svg {
+  fill: var(--bg-100);
+}
+
+.dark__mode svg {
+  fill: var(--accent-200);
+}
+
+.dark__mode .links {
+  color: var(--accent-200);
+}
+/* 
 .container__logo {
   padding: 5rem;
   display: flex;
   background-color: red;
   justify-content: center;
   align-items: center;
-}
-
-.container__logo p {
-  display: inline-block;
-  background-color: green;
-}
-
-.nav__logo__icon {
-  font-size: 5rem;
-}
+} */
 
 .container__logo:hover {
-  transform: scale(1.05);
+  transform: scale(1.19);
 }
 
 .nav__icons {
@@ -999,6 +999,16 @@ img {
 }
 
 @media (min-width: 1000px) {
+  .links {
+    visibility: visible;
+    height: 100%;
+    width: 50%;
+    padding: 1rem 2rem;
+    gap: 5rem;
+    color: var(--bg-100);
+    font-weight: bold;
+    font-size: 2.3rem;
+  }
   .home__container {
     justify-content: center;
     align-items: center;
