@@ -64,7 +64,7 @@ body.dark__mode {
 }
 
 body::-webkit-scrollbar {
-  width: 2vw;
+  width: 1vw;
 }
 
 body::-webkit-scrollbar-thumb {
@@ -76,6 +76,7 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-track {
   width: 20px;
   border-radius: 1rem;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -725,6 +726,22 @@ img {
   transition: background-color 0.5;
 }
 
+.cart__products::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+.cart__products::-webkit-scrollbar-thumb {
+  width: 20px;
+  background-color: var(--bg-100);
+  border-radius: 1rem;
+  scroll-behavior: smooth;
+}
+
+.cart__products::-webkit-scrollbar-track {
+  width: 20px;
+  border-radius: 1rem;
+}
+
 .cart__product {
   display: flex;
   padding: 1rem;
@@ -742,29 +759,47 @@ img {
 .cart__product:hover {
   box-shadow: var(--box__shadow__down);
 }
-.cart__product__body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
 
-  padding: 0.7rem;
+.cart__product__img {
+  display: flex;
+
+  width: 50%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .cart__product__img img {
-  width: 30%;
-  background-color: var(--gray);
+  width: 10rem;
+  background-color: transparent;
   border-radius: 1rem;
-  box-shadow: var(--box__shadow);
+
+  transition: background-color 0.5s;
 }
 
 .dark__model__img .cart__product__img img {
   background-color: var(--accent-200);
 }
 
+.cart__product__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  padding: 0.7rem;
+}
+
+.cart__product__body h4 {
+  font-size: 1.1rem;
+  align-items: flex-start;
+}
+
 .cart__product__opt {
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
+
+  font-size: 1.2rem;
 }
 
 .cart__product__opt i {
@@ -780,8 +815,8 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  height: 15%;
+  border-top: 0.2vh var(--bg-100) dashed;
+  height: 20%;
   padding: 1rem;
 }
 
@@ -789,10 +824,13 @@ img {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 0.5rem;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .btn__buy {
+  font-size: 1.5rem;
   border-radius: 0.4rem;
   padding: 0.4rem;
   width: 100%;
@@ -975,5 +1013,9 @@ img {
     padding: 1.3rem;
     font-size: 1rem;
     margin-top: 1rem;
+  }
+
+  .cart__product__img img {
+    max-width: 8rem;
   }
 }
