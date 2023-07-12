@@ -47,6 +47,11 @@
   scroll-margin-top: var(--h-nav__bar__big);
 }
 
+a {
+  text-decoration: none;
+  color: var(--bg-100);
+}
+
 .main__container {
   display: flex;
   flex-direction: column;
@@ -54,6 +59,7 @@
   scroll-behavior: smooth;
   background-color: var(--text-100);
   user-select: none;
+  transition: 0.5s;
 
   &.dark__mode {
     background-color: var(--bg-100);
@@ -70,11 +76,18 @@ header {
   width: 100%;
   left: 0;
   top: 0;
+  transition: background-color 0.5 box-shadow 0.5;
 }
 
 .dark__mode header {
   background-color: var(--bg-100);
   box-shadow: var(--box__shadow__darkmode);
+}
+
+header nav i {
+  font-size: 3rem;
+  cursor: pointer;
+  position: relative;
 }
 
 .nav__logo__icon {
@@ -165,38 +178,29 @@ header nav {
   padding: 0 1rem;
 }
 
-header nav i {
-  font-size: 3rem;
-  cursor: pointer;
-  position: relative;
-}
-
 .nav__container {
   display: flex;
   position: relative;
   gap: 1rem;
 }
-
-.nav__logo {
+svg {
   display: flex;
+}
+.nav__logo {
+  background-color: blue;
+}
+.container__logo {
+  background-color: red;
+
   align-items: center;
 }
 
-.nav__logo:hover {
+.container__logo:hover {
   transform: scale(1.05);
-}
-
-.nav__logo img {
-  width: 150px;
 }
 
 .nav__icons {
   display: flex;
-}
-
-.nav__logo__icon {
-  display: flex;
-  background-color: transparent;
 }
 
 .bxs-moon:hover {
@@ -237,7 +241,7 @@ nav {
   opacity: 0;
   position: absolute;
 
-  background-color: var(--gray);
+  background-color: var(--text-100);
   display: flex;
   align-self: flex-end;
 
@@ -247,6 +251,10 @@ nav {
   justify-content: center;
 }
 
+.dark__mode .menu {
+  background-color: var(--bg-100);
+}
+
 .menu__hidden {
   opacity: 1;
   height: 100%;
@@ -254,27 +262,45 @@ nav {
 
 .menu a {
   text-align: center;
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 2rem;
   font-size: 2.5rem;
   text-decoration: none;
-  color: var(--black);
+  color: var(--bg-100);
+  letter-spacing: 0.5rem;
+  width: 80%;
   font-size: 2rem;
   cursor: pointer;
+  background-color: var(--text-100);
+}
+
+.dark__mode .menu a {
+  color: var(--bg-100);
+  background-color: var(--accent-100);
 }
 
 .menu__links {
   display: flex;
   flex-direction: column;
-  width: 60%;
-  gap: 3rem;
+  align-items: center;
+  width: 100%;
+  gap: 2rem;
+  min-width: 200;
+}
+.dark__mode .menu__links {
+  box-shadow: var(--box__shadow__darkmode);
 }
 
 .menu__text__home {
-  width: 100%;
+  width: 80%;
+}
+
+.dark__mode .menu__text__home {
+  color: var(--accent-100);
 }
 
 .menu__text__products {
+  background-color: red;
   width: 100%;
 }
 
@@ -439,19 +465,6 @@ nav {
   padding: 1rem;
 }
 
-.buttons {
-  display: grid;
-  padding: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(6rem, 8rem));
-  max-width: var(--max-width);
-  margin: 0 auto;
-  justify-content: space-around;
-  gap: 1rem;
-  box-shadow: var(--box__shadow);
-  background-color: var(--white);
-  border-radius: 0.3rem;
-}
-
 .dark__mode .buttons {
   background-color: var(--bg-200);
   box-shadow: var(--box__shadow__darkmode);
@@ -466,9 +479,10 @@ nav {
   text-decoration: none;
   background-color: var(--white);
   box-shadow: var(--box__shadow__light);
-  transition: transform 0.5s background-color 0.5s;
+  transition: transform 0.5s background-color 0.5s background-color 0.5s
+    box-shadow 0.5s;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .dark__mode .btn {
@@ -477,13 +491,13 @@ nav {
 }
 
 .btn:hover {
-  transform: scale(0.95);
-  background-color: var(--gray);
+  transform: scale(1.1);
+  background-color: var(--text-100);
 }
 
 .btn:active {
-  transform: scale(1.05);
-  background-color: var(--gray);
+  transform: scale(0.95);
+  background-color: var(--text-200);
   box-shadow: var(--box__shadow__down);
 }
 
@@ -501,6 +515,7 @@ nav {
   border-radius: 1rem;
   box-shadow: var(--box__shadow);
   background-color: var(--white);
+  transition: background-color 0.5s;
 }
 
 .dark__mode .product {
@@ -540,7 +555,7 @@ nav {
 }
 
 .product__info .bx-plus {
-  background-color: var(--white);
+  background-color: var(--text-100);
   padding: 0.1rem;
   border-radius: 50%;
   cursor: pointer;
@@ -566,19 +581,24 @@ nav {
 }
 
 .product__info .bxs-trash {
-  background-color: var(--white);
+  background-color: var(--text-100);
   padding: 0.1rem;
   border-radius: 50%;
   cursor: pointer;
   font-weight: bold;
-  color: var(--black);
   color: var(--red__light);
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 .bxs-trash {
   color: var(--red__light);
-  font-size: 0.8rem;
+  transition: background-color 0.5s color 0.5s box-shadow 0.5s;
+}
+
+.dark__mode .bxs-trash {
+  background-color: var(--bg-100);
+  color: var(--accent-100);
+  box-shadow: var(--box__shadow);
 }
 
 .sold__out {
@@ -591,6 +611,10 @@ nav {
   color: white;
 }
 
+.dark__mode .sold__out {
+  background-color: var(--accent-100);
+  box-shadow: var(--box__shadow);
+}
 /*=======================Cart===============================
 */
 
