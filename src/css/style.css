@@ -144,9 +144,10 @@ header nav i {
 }
 
 .menu {
-  visibility: 1;
-  opacity: 0;
+  visibility: 0;
+  opacity: 1;
 }
+
 .menu__hidden {
   position: fixed;
 
@@ -158,8 +159,8 @@ header nav i {
   height: 100vh;
   align-items: center;
   justify-content: center;
-  visibility: 0;
-  opacity: 1;
+  visibility: 1;
+  opacity: 0;
 }
 
 .menu a {

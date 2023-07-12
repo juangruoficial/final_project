@@ -84,6 +84,7 @@ function handleMenuButton() {
 
   menuButton.addEventListener("click", function () {
     menuLinksContainer.classList.toggle("menu__hidden");
+    console.log(menuButton);
   });
 }
 
