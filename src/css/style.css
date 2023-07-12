@@ -716,6 +716,7 @@ img {
 
 .dark__mode .cart {
   background-color: var(--accent-200);
+  box-shadow: var(--box__shadow);
 }
 
 .cart__show {
@@ -898,6 +899,7 @@ img {
 
   .menu {
     margin-top: var(--h-nav__bar__big);
+    width: 50%;
   }
 
   .home {
@@ -1003,7 +1005,7 @@ img {
   }
 
   .menu {
-    width: 40%;
+    width: 30%;
   }
   .home {
     max-width: var(--max-width);
