@@ -1005,7 +1005,7 @@ img {
   }
 
   .home__header__img {
-    display: block;
+    display: flex;
   }
 
   .home__link_showmore {
