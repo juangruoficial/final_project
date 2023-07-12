@@ -907,6 +907,7 @@ img {
     height: 80vh;
     display: flex;
     flex-direction: row-reverse;
+    box-shadow: var(--box__shadow);
   }
 
   .home__container {
