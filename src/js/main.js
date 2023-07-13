@@ -35,7 +35,7 @@ function printProducts(dataBase) {
  
                              <div class="product__info" data-id='${id}'>
                              <h4 data-id='${id}'>${name} |<span data-id='${id}'><b>Stock</b>: ${quantity}</span></h4>
-                             <h5>${buttonMinus}
+                             <h5 class='product__info__trash'>${buttonMinus}
                                     $${price}.00
                                     ${buttonAdd}
                                     ${buttonTrash}
@@ -48,7 +48,73 @@ function printProducts(dataBase) {
   });
 
   document.querySelector(".products").innerHTML = html;
-  //printAmountOnProducts(dataBase);
+}
+
+function printFooter() {
+  const repository = "https://github.com/juangruoficial/final_project";
+  const urlTwitter = "https://twitter.com";
+  const urlFacebook = "https://www.facebook.com/";
+  const urlInstagram = "";
+
+  const html = `
+                <section class="content__footer container">
+                    <div class="footer__info">
+                        <h3 class="footer__info__title">Our information</h3>
+                            <ul>
+                                <li><a href="#">Toluca - México</a></li>
+                            </ul>
+                    </div>
+  
+             <div class="footer__info">
+                 <h3 class="footer__info__title">About Us</h3>
+                 <ul>
+                     <li><a href="#">Support Center</a></li>
+                     <li><a href="#">Customer Support</a></li>
+                     <li><a href="#">About Us</a></li>
+                     <li><a href="#">Copy Right</a></li>
+                 </ul>
+             </div>
+  
+             <div class="footer__info">
+                 <h3 class="footer__info__title">Product</h3>
+                 <ul>
+                     <li><a href="#">Hoodies</a></li>
+                     <li><a href="#">Shirts</a></li>
+                     <li><a href="#">About Us</a></li>
+                     <li><a href="#">Sweatshirts</a></li>
+                 </ul>
+             </div>
+  
+             <div class="footer__info">
+                 <h3 class="footer__info__title">Social</h3>
+                 <ul class="footer__link__social">
+                     <li>
+                         <a href="${urlFacebook}">
+                             <i class="bx bxl-facebook"></i>
+                         </a>
+                     </li>
+                     <li>
+                         <a href="${urlTwitter}">
+                             <i class="bx bxl-twitter"></i>
+                         </a>
+                     </li>
+                     <li>
+                         <a href="${urlInstagram}">
+                             <i class="bx bxl-instagram"></i>
+                         </a>
+                     </li>
+                 </ul>
+             </div>
+         </section>
+  
+          <p>Check my repository :p 
+               <a href="${repository}">
+                    <i class='bx bxs-file-doc'></i> <=========== link
+               </a> 
+          </p>
+     `;
+
+  document.querySelector(".footer").innerHTML = html;
 }
 
 function showHideCart() {
@@ -184,21 +250,18 @@ function handlePodructsFromCart(dataBase) {
     if (element.target.classList.contains("bx-plus")) {
       const id = Number(element.target.parentElement.id);
 
-      //hacer en funcion
       const findProduct = dataBase.products.find(function (element) {
         return element.id === id;
       });
       if (findProduct.quantity === dataBase.cart[findProduct.id].amount)
         return alert("Not enough in Stock quantity");
 
-      //termina aqui
       dataBase.cart[id].amount++;
     }
 
     if (element.target.classList.contains("bx-minus")) {
       const id = Number(element.target.parentElement.id);
 
-      // hacer funcion
       if (dataBase.cart[id].amount === 1) {
         const res = confirm("Are you sure you want to delete this product?");
         if (!res) return;
@@ -206,7 +269,6 @@ function handlePodructsFromCart(dataBase) {
       } else {
         dataBase.cart[id].amount--;
       }
-      //termina la funcion
     }
 
     if (element.target.classList.contains("bxs-trash")) {
@@ -263,7 +325,7 @@ function printInfoTotal(dataBase) {
 function handletoBuy(dataBase) {
   const btnBuyHTML = document.querySelector(".btn__buy");
 
-  btnBuyHTML.addEventListener("click", function (element) {
+  btnBuyHTML.addEventListener("click", function () {
     if (!Object.values(dataBase.cart).length)
       return alert("Please add at least one");
     const res = confirm("Are you sure you want to buy this items?");
@@ -292,6 +354,8 @@ function handletoBuy(dataBase) {
     printProductsToCart(dataBase);
     printAmountProducts(dataBase);
     printProducts(dataBase);
+
+    //?codigo para recargar la pagina
     location.href = location.href;
   });
 }
@@ -332,6 +396,7 @@ function trashtoCartFromProduct(dataBase) {
     printAmountProducts(dataBase);
   });
 }
+
 function getEventListenerProducts(dataBase) {
   const productsHTML = document.querySelector(".products");
 
@@ -357,6 +422,7 @@ function showModal(product, dataBase, id) {
   const modalContent = document.querySelector(".modal__content");
 
   // Actualiza el contenido del modal con la información del producto
+  //debo hacer logica de amount cuando esta 0 para el bug
   const buttonAdd = product.quantity
     ? `<i class='bx bx-plus modal__agregar' id='${product.id}'></i>`
     : `<span class='sold__out'>Sold Out</span>`;
@@ -445,7 +511,7 @@ function handleModalButtons(dataBase, productId, modal) {
   modalCerrar.addEventListener("click", function () {
     console.log("click");
     console.log(modal);
-
+    //quita el style display lo pone en none
     modal.style.display = "none";
   });
 }
@@ -470,13 +536,12 @@ async function main() {
     cart: JSON.parse(window.localStorage.getItem("cart")) || {},
   };
 
-  //saveToLocalStorage("products", dataBase.products);
-  //getfromLocalStorage("products", dataBase.products);
   toggleDarkMode();
   checkDarkMode();
   handleMenuButton();
-  printProducts(dataBase);
 
+  printProducts(dataBase);
+  printFooter();
   getEventListenerProducts(dataBase);
   showHideCart();
 
