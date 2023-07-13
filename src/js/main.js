@@ -368,11 +368,11 @@ function showModal(product, dataBase, id) {
     ? `<i class='bx bxs-trash modal__eliminar' id='${product.id}'></i>`
     : ``;
   const html = `
-              <div>
-                     <button class="modal__close"  id='modal__icon__close'}>boton</button>
+              <div class = 'container__modal__main'>
+                     <button class="modal__close"  id='modal__icon__close'}>X</button>
      
-                     <div class="product ${product.category}" data-id="${product.id}">
-                            <div class="product__img" data-id="${product.id}">
+                     <div class="product ${product.category} modal__product" data-id="${product.id}">
+                            <div class="product__img modal__product__img" data-id="${product.id}">
                                    <img
                                           src="${product.image}"
                                           alt="${product.name}"
