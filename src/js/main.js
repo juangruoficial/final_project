@@ -369,8 +369,9 @@ function showModal(product, dataBase, id) {
     : ``;
   const html = `
               <div class = 'container__modal__main'>
+                     
                      <button class="modal__close"  id='modal__icon__close'}>X</button>
-     
+              <div class='block__modal'>
                      <div class="product ${product.category} modal__product" data-id="${product.id}">
                             <div class="product__img modal__product__img" data-id="${product.id}">
                                    <img
@@ -380,16 +381,16 @@ function showModal(product, dataBase, id) {
                             </div> 
                      </div>
 
-                     <div class="product__info" data-id="${product.id}">
+                     <div class="product__info modal__info" data-id="${product.id}">
                             <h4>
                             ${product.name} |<span><b>Stock</b>: ${product.quantity}</span>
                             </h4>
-                            <h5>
+                            <h5 class='modal__icons'>
                             ${buttonMinus} $${product.price}.00 ${buttonAdd} ${buttonTrash}
                             <span class="amount" id="${product.id}"></span>
                             </h5>
                      </div>
-                     
+              </div>   
               </div>
        `;
   modalContent.innerHTML = html;
