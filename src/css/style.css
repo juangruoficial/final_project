@@ -1057,7 +1057,8 @@ img {
 }
 
 .dark__mode .btn__buy {
-  background-color: var(--primary-200);
+  background-color: var(--bg-100);
+  color: var(--accent-200);
 }
 
 .btn__buy:hover {
