@@ -69,6 +69,26 @@ a {
   color: var(--bg-100);
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.modal__content {
+  background-color: #fff;
+  width: 400px;
+  max-width: 80%;
+  margin: 100px auto;
+  padding: 20px;
+  border-radius: 5px;
+}
+
 .main__container {
   display: flex;
   flex-direction: column;
