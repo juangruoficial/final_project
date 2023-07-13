@@ -128,7 +128,9 @@ function minusToCartFromProducts(dataBase) {
     if (element.target.classList.contains("bx-minus")) {
       const id = Number(element.target.id);
 
-      // hacer funcion
+      if (!dataBase.cart[id] || dataBase.cart[id].amount === 0) {
+        return;
+      }
       if (dataBase.cart[id].amount === 1) {
         const res = confirm("Are you sure you want to delete this product?");
         if (!res) return;
@@ -136,7 +138,6 @@ function minusToCartFromProducts(dataBase) {
       } else {
         dataBase.cart[id].amount--;
       }
-      //termina la funcion
 
       window.localStorage.setItem("cart", JSON.stringify(dataBase.cart));
 
