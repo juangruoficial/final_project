@@ -801,7 +801,7 @@ img {
 
 .dark__mode .product__info .bx-plus,
 .dark__mode .product__info .bx-minus {
-  background-color: var(--accent-100);
+  background-color: var(--bg-100);
 }
 
 .bx-plus:hover,
@@ -843,7 +843,7 @@ img {
 
 .dark__mode .bxs-trash {
   background-color: transparent;
-  color: var(--accent-100);
+  color: var(--bg-100);
   box-shadow: var(--box__shadow);
 }
 
@@ -1009,7 +1009,7 @@ img {
 }
 
 .dark__mode .cart__product__opt i {
-  background-color: var(--accent-100);
+  background-color: var(--bg-100);
   border-radius: 50%;
 }
 
