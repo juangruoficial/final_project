@@ -28,13 +28,13 @@ function printProducts(dataBase) {
       : ``;
 
     html += `
-                      <div class="product ${category}" >
-                             <div class="product__img">
-                                    <img src="${image}" alt="${name}" />
+                      <div class='product ${category}' data-id='${id}' >
+                             <div class="product__img" data-id='${id}'>
+                                    <img data-id='${id}' src="${image}" alt="${name}" />
                              </div>
  
-                             <div class="product__info">
-                             <h4>${name} |<span><b>Stock</b>: ${quantity}</span></h4>
+                             <div class="product__info" data-id='${id}'>
+                             <h4 data-id='${id}'>${name} |<span data-id='${id}'><b>Stock</b>: ${quantity}</span></h4>
                              <h5>${buttonMinus}
                                     $${price}.00
                                     ${buttonAdd}
@@ -331,21 +331,78 @@ function trashtoCartFromProduct(dataBase) {
     printInfoTotal(dataBase);
     printAmountProducts(dataBase);
   });
+}
+function getEventListenerProducts(dataBase) {
+  const productsHTML = document.querySelector(".products");
 
-  // hacer funcion
-
-  //termina la funcion
-
-  /*  window.localStorage.setItem("cart", JSON.stringify(dataBase.cart));
-              printProducts(dataBase);
-              printProductsToCart(dataBase);
-              printAmountProducts(dataBase);
-              printInfoTotal(dataBase);
-              printAmountProducts(dataBase);
-              addToCartFromProducts(dataBase);
-            }); */
+  productsHTML.addEventListener("click", function (event) {
+    console.log(event.target.parentElement.dataset);
+    const productId = Number(event.target.parentElement.dataset.id);
+    console.log(productId);
+    if (productId) {
+      console.log(productId);
+      const product = dataBase.products.find(
+        (product) => product.id === productId
+      );
+      s;
+      console.log(product);
+      if (product) {
+        showModal(product, dataBase, productId);
+      }
+    }
+  });
 }
 
+function showModal(product, dataBase, productId) {
+  const modal = document.querySelector(".modal");
+  const modalContent = document.querySelector(".modal__content");
+
+  // Actualiza el contenido del modal con la información del producto
+  const buttonAdd = product.quantity
+    ? `<i class='bx bx-plus modal__agregar' id='${product.id}'></i>`
+    : `<span class='sold__out'>Sold Out</span>`;
+  const buttonMinus = product.quantity
+    ? `<i class='bx bx-minus modal__restar' id='${product.id}'></i>`
+    : ``;
+
+  const buttonTrash = product.quantity
+    ? `<i class='bx bxs-trash modal__eliminar' id='${product.id}'></i>`
+    : ``;
+  const html = `
+       <div class="container__modal">
+       <div class="modal__product">
+         <button class="modal__close">boton</button>
+       </div>
+     
+       <div class="product ${product.category}" data-id="${product.id}">
+         <div class="product__img" data-id="${product.id}">
+           <img
+             src="${product.image}"
+             alt="${product.name}"
+             data-id="${product.id}"
+           />
+         </div>
+     
+         <div class="product__info" data-id="${product.id}">
+           <h4>
+             ${product.name} |<span><b>Stock</b>: ${product.quantity}</span>
+           </h4>
+           <h5>
+             ${buttonMinus} $${product.price}.00 ${buttonAdd} ${buttonTrash}
+             <span class="amount" id="${product.id}"></span>
+           </h5>
+         </div>
+       </div>
+     </div>
+                `;
+
+  modalContent.innerHTML = html;
+
+  // Muestra el modal (puedes utilizar tu propia implementación para mostrarlo)
+  modal.style.display = "block";
+
+  handleModalButtons(dataBase, productId);
+}
 function handleFilters(dataBase) {
   mixitup(".products", {
     selectors: {
@@ -373,6 +430,7 @@ async function main() {
   handleMenuButton();
   printProducts(dataBase);
 
+  getEventListenerProducts(dataBase);
   showHideCart();
 
   addToCartFromProducts(dataBase);
@@ -385,6 +443,7 @@ async function main() {
   handletoBuy(dataBase);
   printAmountProducts(dataBase);
   trashtoCartFromProduct(dataBase);
+
   handleFilters(dataBase);
 }
 
