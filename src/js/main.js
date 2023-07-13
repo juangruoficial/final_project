@@ -344,7 +344,6 @@ function getEventListenerProducts(dataBase) {
       const product = dataBase.products.find(
         (product) => product.id === productId
       );
-      s;
       console.log(product);
       if (product) {
         showModal(product, dataBase, productId);
@@ -353,7 +352,7 @@ function getEventListenerProducts(dataBase) {
   });
 }
 
-function showModal(product, dataBase, productId) {
+function showModal(product, dataBase, id) {
   const modal = document.querySelector(".modal");
   const modalContent = document.querySelector(".modal__content");
 
@@ -369,41 +368,88 @@ function showModal(product, dataBase, productId) {
     ? `<i class='bx bxs-trash modal__eliminar' id='${product.id}'></i>`
     : ``;
   const html = `
-       <div class="container__modal">
-       <div class="modal__product">
-         <button class="modal__close">boton</button>
-       </div>
+              <div>
+                     <button class="modal__close"  id='modal__icon__close'}>boton</button>
      
-       <div class="product ${product.category}" data-id="${product.id}">
-         <div class="product__img" data-id="${product.id}">
-           <img
-             src="${product.image}"
-             alt="${product.name}"
-             data-id="${product.id}"
-           />
-         </div>
-     
-         <div class="product__info" data-id="${product.id}">
-           <h4>
-             ${product.name} |<span><b>Stock</b>: ${product.quantity}</span>
-           </h4>
-           <h5>
-             ${buttonMinus} $${product.price}.00 ${buttonAdd} ${buttonTrash}
-             <span class="amount" id="${product.id}"></span>
-           </h5>
-         </div>
-       </div>
-     </div>
-                `;
+                     <div class="product ${product.category}" data-id="${product.id}">
+                            <div class="product__img" data-id="${product.id}">
+                                   <img
+                                          src="${product.image}"
+                                          alt="${product.name}"
+                                          data-id="${product.id}"
+                            </div> 
+                     </div>
 
+                     <div class="product__info" data-id="${product.id}">
+                            <h4>
+                            ${product.name} |<span><b>Stock</b>: ${product.quantity}</span>
+                            </h4>
+                            <h5>
+                            ${buttonMinus} $${product.price}.00 ${buttonAdd} ${buttonTrash}
+                            <span class="amount" id="${product.id}"></span>
+                            </h5>
+                     </div>
+                     
+              </div>
+       `;
   modalContent.innerHTML = html;
 
-  // Muestra el modal (puedes utilizar tu propia implementación para mostrarlo)
   modal.style.display = "block";
 
-  handleModalButtons(dataBase, productId);
+  handleModalButtons(dataBase, id, modal);
 }
-function handleFilters(dataBase) {
+
+function handleModalButtons(dataBase, productId, modal) {
+  const modalAgregar = document.querySelector(".modal__agregar");
+  const modalRestar = document.querySelector(".modal__restar");
+  const modalEliminar = document.querySelector(".modal__eliminar");
+  const modalAmount = document.querySelector(".modal__amount");
+  const modalCerrar = document.querySelector("#modal__icon__close");
+
+  if (modalAgregar && modalRestar && modalEliminar && modalCerrar) {
+    modalAgregar.addEventListener("click", incrementAmount());
+    modalRestar.addEventListener("click", decrementAmount());
+    modalEliminar.addEventListener("click", decrementAmount());
+  }
+
+  function incrementAmount() {}
+
+  function decrementAmount() {}
+
+  modalAgregar.addEventListener("click", function () {
+    dataBase.cart[productId].amount++;
+    modalAmount.textContent = dataBase.cart[productId].amount.toString();
+  });
+
+  modalRestar.addEventListener("click", function () {
+    if (!dataBase.cart[productId] || dataBase.cart[productId].amount === 0) {
+      return;
+    }
+    if (dataBase.cart[productId].amount === 1) {
+      const res = confirm("Are you sure you want to delete this product?");
+      if (!res) return;
+      delete dataBase.cart[productId].amount;
+    } else {
+      dataBase.cart[productId].amount--;
+    }
+  });
+
+  modalEliminar.addEventListener("click", function () {
+    if (dataBase.cart[productId].amount > 0) {
+      dataBase.cart[productId].amount--;
+      modalAmount.textContent = dataBase.cart[productId].amount.toString();
+    }
+  });
+
+  modalCerrar.addEventListener("click", function () {
+    console.log("click");
+    console.log(modal);
+
+    modal.style.display = "none";
+  });
+}
+
+function handleFilters() {
   mixitup(".products", {
     selectors: {
       target: ".product",
