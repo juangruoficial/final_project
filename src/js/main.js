@@ -280,8 +280,7 @@ function handlePodructsFromCart(dataBase) {
     }
 
     if (element.target.classList.contains("bxs-trash")) {
-      const id = Number(element.target.parentElement.id);
-      if (dataBase.cart[id].amount) {
+      if (cart[id].amount === 1) {
         const res = confirm("Are you sure you want to delete this product?");
         if (!res) return;
         delete dataBase.cart[id];
@@ -474,7 +473,6 @@ function handleModalButtons(dataBase, id, modal, cart) {
   const modalAgregar = document.querySelector(".modal__agregar");
   const modalRestar = document.querySelector(".modal__restar");
   const modalEliminar = document.querySelector(".modal__eliminar");
-  const modalAmount = document.querySelector(".modal__amount");
   const modalCerrar = document.querySelector("#modal__icon__close");
 
   const findProduct = dataBase.products.find(function (element) {
@@ -498,7 +496,6 @@ function handleModalButtons(dataBase, id, modal, cart) {
   });
 
   modalRestar.addEventListener("click", function () {
-    console.log(cart[id]);
     if (!cart[id] || cart[id].amount === 0) return;
     if (cart[id].amount === 1) {
       const res = confirm("Are you sure you want to delete this product?");
@@ -515,10 +512,16 @@ function handleModalButtons(dataBase, id, modal, cart) {
   });
 
   modalEliminar.addEventListener("click", function () {
-    if (dataBase.cart[productId].amount > 0) {
-      dataBase.cart[productId].amount--;
-      modalAmount.textContent = dataBase.cart[productId].amount.toString();
+    if (!cart[id] || cart[id].amount === 0) return;
+    if (cart[id].amount) {
+      const res = confirm("Are you sure you want to delete this product?");
+      if (!res) return;
+      delete cart[id];
     }
+    window.localStorage.setItem("cart", JSON.stringify(dataBase.cart));
+    printProductsToCart(dataBase);
+    printInfoTotal(dataBase);
+    printAmountProducts(dataBase);
   });
 
   modalCerrar.addEventListener("click", function () {
