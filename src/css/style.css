@@ -206,11 +206,9 @@ b {
 }
 
 .modal__info {
-  min-height: 30%;
+  min-height: 5vh;
   background-color: var(--bg-100);
   color: var(--text-100);
-  border-bottom-right-radius: 1rem;
-  border-bottom-left-radius: 1rem;
 }
 
 .modal__info h4 {
@@ -749,7 +747,8 @@ img {
 
 .product {
   display: grid;
-  border-radius: 1rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
   box-shadow: var(--box__shadow);
   background-color: var(--white);
   transition: background-color 0.3s;
