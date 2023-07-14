@@ -69,6 +69,7 @@ body::-webkit-scrollbar-thumb {
   width: 20px;
   background-color: var(--bg-100);
   border-radius: 1rem;
+  transition: all 1s ease-in-out;
 }
 
 body::-webkit-scrollbar-track {
@@ -135,7 +136,7 @@ b {
   left: 0;
   width: 100%;
   height: 100%;
-  transition: all 0.3s ease-in;
+  transition: all 1s ease-in;
 }
 
 .modal__content {
@@ -149,7 +150,7 @@ b {
   background-color: rgba(0, 0, 0, 0.4);
   height: 100vh;
 
-  transition: all 0.3s ease-in;
+  transition: all 0.5s ease-in;
 }
 .container__modal__main {
   display: flex;
@@ -183,6 +184,7 @@ b {
   border-radius: 1rem;
   width: 50%;
   height: 100vh;
+  transition: all 1s ease-in-out;
 }
 .modal__close {
   border: none;
@@ -436,16 +438,18 @@ img {
 
 .menu {
   margin-top: var(--h-nav__bar);
-  opacity: 0;
   position: fixed;
 
   background-color: var(--text-100);
   display: flex;
   align-self: flex-end;
+  height: 100vh;
   width: 80%;
   align-items: center;
   justify-content: center;
   box-shadow: var(--box__shadow);
+  transform: translateX(100%);
+  transition: all 0.5s ease-in-out;
 }
 
 .dark__mode .menu {
@@ -453,8 +457,8 @@ img {
 }
 
 .menu__hidden {
-  opacity: 1;
-  height: 100%;
+  transform: translateX(0%);
+  height: 100vh;
 }
 
 .menu a {
@@ -606,10 +610,6 @@ img {
   gap: 0.5rem;
 }
 
-.home__text:hover {
-  transform: scale(1.03);
-}
-
 .text__container {
   display: flex;
   align-self: center;
@@ -753,6 +753,7 @@ img {
   background-color: var(--white);
   transition: background-color 0.3s;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 .product:hover {
