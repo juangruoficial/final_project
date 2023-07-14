@@ -280,7 +280,7 @@ function handlePodructsFromCart(dataBase) {
     }
 
     if (element.target.classList.contains("bxs-trash")) {
-      if (cart[id].amount === 1) {
+      if (dataBase.cart[id].amount === 1) {
         const res = confirm("Are you sure you want to delete this product?");
         if (!res) return;
         delete dataBase.cart[id];
@@ -485,7 +485,6 @@ function handleModalButtons(dataBase, id, modal, cart) {
       cart[id] = { ...findProduct, amount: 1 };
     }
 
-    console.log(cart);
     window.localStorage.setItem("cart", JSON.stringify(dataBase.cart));
     printProductsToCart(dataBase);
     printInfoTotal(dataBase);
