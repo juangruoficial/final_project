@@ -165,7 +165,6 @@ function handleMenuButton() {
 
   menuButton.addEventListener("click", function () {
     menuLinksContainer.classList.toggle("menu__hidden");
-    console.log(menuButton);
   });
 }
 
@@ -174,7 +173,6 @@ function addToCartFromProducts(dataBase) {
 
   productsHTML.addEventListener("click", function (element) {
     if (element.target.classList.contains("bx-plus")) {
-      //console.log(element.target.id);
       const id = Number(element.target.id);
 
       const findProduct = dataBase.products.find(function (element) {
@@ -394,8 +392,6 @@ function trashtoCartFromProduct(dataBase) {
         }
       }
     }
-    //termina la funcion
-
     window.localStorage.setItem("cart", JSON.stringify(dataBase.cart));
     printProductsToCart(dataBase);
     printInfoTotal(dataBase);
