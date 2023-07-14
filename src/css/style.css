@@ -94,13 +94,16 @@ a:hover {
   color: var(--bg-100);
 }
 
-h3 {
-  font-size: 1.2rem;
-  color: var(--bg-100);
-}
-
 footer {
   padding: 1rem;
+}
+
+span {
+  font-size: 1rem;
+}
+
+b {
+  font-size: 1rem;
 }
 
 .loading-container {
@@ -147,7 +150,6 @@ footer {
   width: 100%;
   height: 100vh;
   padding: 20px;
-  border-radius: 50px;
   transition: all 0.3s ease-in;
 }
 .container__modal__main {
@@ -156,6 +158,7 @@ footer {
   padding: 1rem;
   justify-content: center;
   align-items: center;
+  height: 50vh;
   min-width: 200px;
   transition: all 0.2s ease-in-out;
   gap: 2rem;
@@ -178,6 +181,7 @@ footer {
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
+  border-radius: 1rem;
 }
 .modal__close {
   border: none;
@@ -194,6 +198,7 @@ footer {
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
   background-color: var(--text-100);
+  height: 60%;
 }
 
 .dark__mode .modal__product__img {
@@ -201,10 +206,15 @@ footer {
 }
 
 .modal__info {
+  min-height: 30%;
   background-color: var(--bg-100);
   color: var(--text-100);
   border-bottom-right-radius: 1rem;
   border-bottom-left-radius: 1rem;
+}
+
+.modal__info h4 {
+  font-size: 1.5rem;
 }
 
 .dark__mode .modal__info {
@@ -811,25 +821,32 @@ img {
 }
 
 .product__info .bx-minus {
+  border: 2px solid var(--text-100);
   background-color: var(--bg-100);
   padding: 0.1rem;
   border-radius: 50%;
   cursor: pointer;
   font-weight: bold;
-  color: var(--primary-300);
-  font-size: 0.8rem;
+  color: var(--text-100);
+  font-size: 1.2rem;
   transition: background-color 0.5s color 0.5s;
 }
 
 .dark__mode .bx {
+  color: var(--text-100);
+}
+
+.product__info .bx-plus {
   background-color: var(--bg-100);
-  color: var(--accent-200);
+  color: var(--text-100);
+  border: 2px solid var(--text-100);
+  font-size: 1.2rem;
 }
 
 .product__info .bxs-trash {
-  background-color: var(--text-100);
-  padding: 0.1rem;
+  padding: 0.2rem;
   border-radius: 50%;
+  background-color: var(--bg-100);
   cursor: pointer;
   font-weight: bold;
   color: var(--red__light);
@@ -837,14 +854,23 @@ img {
 }
 
 .bxs-trash {
+  padding: 0.2rem;
+  border-radius: 50%;
+  border: 2px solid var(--text-100);
   color: var(--red__light);
+  background-color: var(--bg-100);
   transition: background-color 0.5s color 0.5s box-shadow 0.5s;
 }
 
 .dark__mode .bxs-trash {
-  background-color: transparent;
-  color: var(--bg-100);
-  box-shadow: var(--box__shadow);
+  border: 2px solid var(--text-100);
+  color: var(--red__light);
+  border-radius: 50%;
+  padding: 0.2rem;
+  box-shadow: var(--box__shadow__light);
+}
+.dark__mode .bxs-trash:hover {
+  color: var(--white);
 }
 
 .sold__out {
