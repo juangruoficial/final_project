@@ -859,7 +859,7 @@ img {
 }
 
 .dark__mode .sold__out {
-  background-color: var(--accent-100);
+  background-color: var(--bg-100);
   box-shadow: var(--box__shadow);
 }
 
