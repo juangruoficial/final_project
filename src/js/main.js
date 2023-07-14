@@ -428,11 +428,11 @@ function showModal(product, dataBase, id) {
     : `<span class='sold__out modal__agregar'>Sold Out</span>`;
   const buttonMinus = product.quantity
     ? `<i class='bx bx-minus modal__restar' id='${product.id}'></i>`
-    : `<span class='sold__out modal__restar'></span>`;
+    : `<span class='modal__restar'></span>`;
 
   const buttonTrash = product.quantity
     ? `<i class='bx bxs-trash modal__eliminar' id='${product.id}'></i>`
-    : `<span class='sold__out modal__eliminar'></span>`;
+    : `<span class=' modal__eliminar'></span>`;
   const html = `
               <div class = 'container__modal__main'>
                      
