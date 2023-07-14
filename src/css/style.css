@@ -142,14 +142,13 @@ b {
   z-index: 10000;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+
   justify-content: center;
   align-items: center;
   min-width: 200px;
   background-color: rgba(0, 0, 0, 0.4);
-  width: 100%;
   height: 100vh;
-  padding: 20px;
+
   transition: all 0.3s ease-in;
 }
 .container__modal__main {
@@ -158,7 +157,7 @@ b {
   padding: 1rem;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  height: 90vh;
   min-width: 200px;
   transition: all 0.2s ease-in-out;
   gap: 2rem;
@@ -182,6 +181,8 @@ b {
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   border-radius: 1rem;
+  width: 50%;
+  height: 100vh;
 }
 .modal__close {
   border: none;
@@ -198,7 +199,6 @@ b {
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
   background-color: var(--text-100);
-  height: 60%;
 }
 
 .dark__mode .modal__product__img {
@@ -212,7 +212,7 @@ b {
 }
 
 .modal__info h4 {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .dark__mode .modal__info {
@@ -1275,6 +1275,16 @@ img {
 }
 
 @media (min-width: 1000px) {
+  .block__modal {
+    animation-name: moveUpDown;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    border-radius: 1rem;
+    width: 65%;
+    height: 100vh;
+  }
+
   .links {
     visibility: visible;
     height: 100%;
