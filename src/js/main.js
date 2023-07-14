@@ -180,7 +180,6 @@ function addToCartFromProducts(dataBase) {
       const findProduct = dataBase.products.find(function (element) {
         return element.id === id;
       });
-
       if (dataBase.cart[findProduct.id]) {
         if (findProduct.quantity === dataBase.cart[findProduct.id].amount)
           return alert("Not enough in Stock quantity");
@@ -205,9 +204,7 @@ function minusToCartFromProducts(dataBase) {
     if (element.target.classList.contains("bx-minus")) {
       const id = Number(element.target.id);
 
-      if (!dataBase.cart[id] || dataBase.cart[id].amount === 0) {
-        return;
-      }
+      if (!dataBase.cart[id] || dataBase.cart[id].amount === 0) return;
       if (dataBase.cart[id].amount === 1) {
         const res = confirm("Are you sure you want to delete this product?");
         if (!res) return;
@@ -395,7 +392,6 @@ function trashtoCartFromProduct(dataBase) {
           const res = confirm("Are you sure you want to delete this product?");
           if (!res) return;
           delete dataBase.cart[id];
-          console.log(dataBase.cart[id]);
         }
       }
     }
@@ -412,15 +408,11 @@ function getEventListenerProducts(dataBase) {
   const productsHTML = document.querySelector(".products");
 
   productsHTML.addEventListener("click", function (event) {
-    console.log(event.target.parentElement.dataset);
     const productId = Number(event.target.parentElement.dataset.id);
-    console.log(productId);
     if (productId) {
-      console.log(productId);
       const product = dataBase.products.find(
         (product) => product.id === productId
       );
-      console.log(product);
       if (product) {
         showModal(product, dataBase, productId);
       }
@@ -433,7 +425,8 @@ function showModal(product, dataBase, id) {
   const modalContent = document.querySelector(".modal__content");
 
   // Actualiza el contenido del modal con la información del producto
-  //debo hacer logica de amount cuando esta 0 para el bug
+  //debo hacer logica de amount cuando esta 0 para el bug\
+  console.log(dataBase.cart);
   const buttonAdd = product.quantity
     ? `<i class='bx bx-plus modal__agregar' id='${product.id}'></i>`
     : `<span class='sold__out'>Sold Out</span>`;
@@ -474,42 +467,51 @@ function showModal(product, dataBase, id) {
 
   modal.style.display = "block";
 
-  handleModalButtons(dataBase, id, modal);
+  handleModalButtons(dataBase, id, modal, dataBase.cart);
 }
 
-function handleModalButtons(dataBase, productId, modal) {
+function handleModalButtons(dataBase, id, modal, cart) {
   const modalAgregar = document.querySelector(".modal__agregar");
   const modalRestar = document.querySelector(".modal__restar");
   const modalEliminar = document.querySelector(".modal__eliminar");
   const modalAmount = document.querySelector(".modal__amount");
   const modalCerrar = document.querySelector("#modal__icon__close");
 
-  if (modalAgregar && modalRestar && modalEliminar && modalCerrar) {
-    modalAgregar.addEventListener("click", incrementAmount());
-    modalRestar.addEventListener("click", decrementAmount());
-    modalEliminar.addEventListener("click", decrementAmount());
-  }
-
-  function incrementAmount() {}
-
-  function decrementAmount() {}
+  const findProduct = dataBase.products.find(function (element) {
+    return element.id === id;
+  });
 
   modalAgregar.addEventListener("click", function () {
-    dataBase.cart[productId].amount++;
-    modalAmount.textContent = dataBase.cart[productId].amount.toString();
+    if (cart[id]) {
+      if (cart[id].quantity === cart[id].amount)
+        return alert("Not enough in Stock quantity");
+      cart[id].amount++;
+    } else {
+      cart[id] = { ...findProduct, amount: 1 };
+    }
+
+    console.log(cart);
+    window.localStorage.setItem("cart", JSON.stringify(dataBase.cart));
+    printProductsToCart(dataBase);
+    printInfoTotal(dataBase);
+    printAmountProducts(dataBase);
   });
 
   modalRestar.addEventListener("click", function () {
-    if (!dataBase.cart[productId] || dataBase.cart[productId].amount === 0) {
-      return;
-    }
-    if (dataBase.cart[productId].amount === 1) {
+    console.log(cart[id]);
+    if (!cart[id] || cart[id].amount === 0) return;
+    if (cart[id].amount === 1) {
       const res = confirm("Are you sure you want to delete this product?");
       if (!res) return;
-      delete dataBase.cart[productId].amount;
+      delete cart[id];
     } else {
-      dataBase.cart[productId].amount--;
+      dataBase.cart[id].amount--;
     }
+
+    window.localStorage.setItem("cart", JSON.stringify(dataBase.cart));
+    printProductsToCart(dataBase);
+    printInfoTotal(dataBase);
+    printAmountProducts(dataBase);
   });
 
   modalEliminar.addEventListener("click", function () {
@@ -520,8 +522,6 @@ function handleModalButtons(dataBase, productId, modal) {
   });
 
   modalCerrar.addEventListener("click", function () {
-    console.log("click");
-    console.log(modal);
     //quita el style display lo pone en none
     modal.style.display = "none";
   });
